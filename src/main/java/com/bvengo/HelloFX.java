@@ -8,11 +8,11 @@ import javafx.stage.Stage;
 public class HelloFX extends Application {
 
   private int maxWindowWidth = 1024;
-  private int maxWindowHeight = 720;
+  private int maxWindowHeight = 1024;
 
-  private int cols = 50;
-  private int rows = 50;
-  private int cellSize = 40;
+  private int cols = 20;
+  private int rows = 20;
+  private int cellSize = 50;
 
   @Override
   public void start(Stage stage) {
