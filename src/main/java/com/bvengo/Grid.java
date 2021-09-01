@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 public class Grid extends Pane {
   private int width, height;
   private int cols, rows;
+  private int cellWidth, cellHeight;
 
   private Cell[][] cells;
 
@@ -19,22 +20,32 @@ public class Grid extends Pane {
     cols = _cols;
     rows = _rows;
 
+    cellWidth = width/cols;
+    cellHeight = height/rows;
+
     cells = new Cell[rows][cols];
+
+    populate();
   }
 
-  public void add(Cell cell, int column, int row) {
+  public void populate() {
+    for (int row = 0; row < rows; row++) {
+      for (int col = 0; col < cols; col++) {
+        setCell(new Cell(col, row), col, row);
+      }
+    }
+  }
 
-    cells[row][column] = cell;
+  public void setCell(Cell cell, int col, int row) {
+    cells[row][col] = cell;
 
-    double w = width / cols;
-    double h = height / rows;
-    double x = w * column;
-    double y = h * row;
+    double x = cellWidth * col;
+    double y = cellHeight * row;
 
     cell.setLayoutX(x);
     cell.setLayoutY(y);
-    cell.setPrefWidth(w);
-    cell.setPrefHeight(h);
+    cell.setPrefWidth(cellWidth);
+    cell.setPrefHeight(cellHeight);
     cell.setBorder(new Border(new BorderStroke(
       Color.BLACK,
       BorderStrokeStyle.SOLID,
@@ -46,7 +57,7 @@ public class Grid extends Pane {
 
   }
 
-  public Cell getCell(int column, int row) {
-    return cells[row][column];
+  public Cell getCell(int col, int row) {
+    return cells[row][col];
   }
 }

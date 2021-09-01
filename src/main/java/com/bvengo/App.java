@@ -5,7 +5,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class HelloFX extends Application {
+public class App extends Application {
 
   private int maxWindowWidth = 1024;
   private int maxWindowHeight = 1024;
@@ -24,12 +24,6 @@ public class HelloFX extends Application {
       StackPane root = new StackPane();
 
       Grid grid = new Grid(width, height, cols, rows);
-
-      for (int row = 0; row < rows; row++) {
-        for (int col = 0; col < cols; col++) {
-          grid.add(new Cell(col, row), col, row);
-        }
-      }
 
       root.getChildren().add(grid);
 
